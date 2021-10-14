@@ -2,8 +2,8 @@
 // atorgerson
 
 #include <iostream>
-#include "Drink.h"
 #include "Customer.h"
+#include "Drink.h"
 
 using namespace std;
 
@@ -53,11 +53,11 @@ float getInput() {
 		cin >> retVal;
 		if (retVal <= 0 || cin.fail()) {
 			goodInput = false;
-			cin.clear()
-			cin.ignore(std::numeric_limits<int>::max(),'\n');
+			cin.clear();
+			//cin.ignore(std::numeric_limits<int>::max(),'\n');
 			cout << "Please enter a number." << endl;
-		}
-	while (!goodInput)
+		} 
+	} while (!goodInput);
 	return retVal;
 }
 
