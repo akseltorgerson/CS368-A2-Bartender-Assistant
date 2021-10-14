@@ -54,8 +54,8 @@ float getInput() {
 		if (retVal <= 0 || cin.fail()) {
 			goodInput = false;
 			cin.clear();
-			//cin.ignore(std::numeric_limits<int>::max(),'\n');
-			cout << "Please enter a number." << endl;
+			cin.ignore(1000,'\n');
+			cout << "Please enter a number: ";
 		} 
 	} while (!goodInput);
 	return retVal;
@@ -66,8 +66,8 @@ int main() {
 	int userSel = 0;
 	float userTip = 0.0;
 	int menuState = 1;
-	Customer* cust = new Customer();
-	Drink drink;
+	Customer cust = Customer();
+	Drink drink = Drink();
 
 	while (1) {
 
@@ -102,27 +102,27 @@ int main() {
 			userSel = getInput();
 			switch (userSel) {
 				case 1:
-					drink = new Drink("Whole Milk", 2.5, NEAT);
+					drink = Drink("Whole Milk", 2.5, NEAT);
 					menuState = 3;
 					break;
 				case 2:
-					drink = new Drink("2% Milk", 2.0, NEAT);
+					drink = Drink("2% Milk", 2.0, NEAT);
 					menuState = 3;
 					break;
 				case 3:
-					drink = new Drink("Heavy Cream", 3.5, NEAT);
+					drink = Drink("Heavy Cream", 3.5, NEAT);
 					menuState = 3;
 					break;
 				case 4:
-					drink = new Drink("Milkshake", 5.0, NEAT);
+					drink = Drink("Milkshake", 5.0, NEAT);
 					menuState = 3;
 					break;
 				case 5:
-					drink = new Drink("Malt", 6.0, NEAT);
+					drink = Drink("Malt", 6.0, NEAT);
 					menuState = 3;
 					break;
 				case 6:
-					drink = new Drink("Skim Milk", 1.0, NEAT);
+					drink = Drink("Skim Milk", 1.0, NEAT);
 					menuState = 3;
 					break;
 				case 7:
@@ -139,20 +139,20 @@ int main() {
 			userSel = getInput();
 			switch (userSel) {
 			case 1:
-				cust->Serve(drink, NEAT);
-				menuState == 1;
+				cust.Serve(drink, NEAT);
+				menuState = 1;
 				break;
 			case 2:
-				cust->Serve(drink, ROCKS);
-				menuState == 1;
+				cust.Serve(drink, ROCKS);
+				menuState = 1;
 				break;
 			case 3:
-				cust->Serve(drink, DOUBLE);
-				menuState == 1;
+				cust.Serve(drink, DOUBLE);
+				menuState = 1;
 				break;
 			case 4:
-				cust->Serve(drink, TALL);
-				menuState == 1;
+				cust.Serve(drink, TALL);
+				menuState = 1;
 				break;
 			default:
 				cout << "Please enter a valid selection!" << endl;
@@ -162,15 +162,14 @@ int main() {
 
 		// Paying Tab
 		else if (menuState == 4) {
-			cout << "Please enter a tip: " << endl;
+			cout << "Please enter a tip: ";
 			userTip = getInput();
 			userTip /= 100;
-			cust->Print();
-			cout << "Enter any number to return to menu..." << endl;
+			cust.Print(userTip);
+			cout << "Enter any number to return to menu... ";
 			cin >> userTip;
 			menuState = 1;
-			delete cust;
-			cust = new Customer();
+			cust = Customer();
 		}
 	}
 }

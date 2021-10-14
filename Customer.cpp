@@ -1,39 +1,33 @@
 #include "Customer.h"
 
-#define DRINK_LIMIT = 10
-#define TAX = 0.05
+using namespace std;
 
-class Customer {
-	private:
-		Drink drinkList[10];
-		int drinkCount;
-	public:
-		Customer() {
-			drinkCount = 0;
-		}
-		void Serve(const Drink& drink, const STYLE style) {
-			if (drinkCount < DRINK_LIMIT) {
-				drinkList[drinkCount] = Drink(drink);
-				drinkList[drinkCount].Prepare(style);
-				drinkCount++;
-			} 
-			return;
-		}
-		float TotalTab(const float tip) {
-			float runningTotal = 0.0;
-			for (int i = 0; i < drinkCount; i++) {
-				runningTotal += drinkList[i].TotalPrice();
-			}
-			runningTotal += (runningTotal * TAX) + (runningTotal * tip);
-			return runningTotal;
-		}
-		void Print(const float tip) {
-			for (int i = 0; i < drinkCount; i++) {
-				drinkList[drinkCount].Print();
-			}
-			cout << *** << endl;
-			cout << "Tax: " << TAX * 100 << "%" << endl;
-			cout << "Tip: " << tip * 100 << "%" << endl;
-			cout << "Total: $" << TotalTab(tip) << endl;
-		}
-};
+Customer::Customer() {
+	drinkCount = 0;
+}
+void Customer::Serve(const Drink& drink, const STYLE style) {
+	if (drinkCount < DRINK_LIMIT) {
+		Drink copyDrink = Drink(drink);
+		copyDrink.Prepare(style);
+		drinkList[drinkCount] = copyDrink;
+		drinkCount++;
+	} 
+	return;
+}
+float Customer::TotalTab(const float tip) {
+	float runningTotal = 0.0;
+	for (int i = 0; i < drinkCount; i++) {
+		runningTotal += drinkList[i].TotalPrice();
+	}
+	runningTotal += (runningTotal * TAX) + (runningTotal * tip);
+	return runningTotal;
+}
+void Customer::Print(const float tip) {
+	for (int i = 0; i < drinkCount; i++) {
+		drinkList[i].Print();
+	}
+	std::cout << "***" << endl;
+	std::cout << "Tax: " << TAX * 100 << "%" << endl;
+	std::cout << "Tip: " << tip * 100 << "%" << endl;
+	std::cout << "Total: $" << TotalTab(tip) << endl;
+}

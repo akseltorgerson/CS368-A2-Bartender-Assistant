@@ -4,12 +4,14 @@
 #ifndef CUSTOMER_HEADER
 #define CUSTOMER_HEADER
 
-#define DRINK_LIMIT = 10
-#define TAX = 0.05
+using namespace std;
+
+#define DRINK_LIMIT 10
+#define TAX 0.05
 
 class Customer {
 	private:
-		Drink drinkList[10];
+		Drink drinkList[DRINK_LIMIT];
 		int drinkCount;
 	public:
 		Customer();
