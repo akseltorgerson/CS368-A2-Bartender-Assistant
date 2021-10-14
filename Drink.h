@@ -1,3 +1,6 @@
+// Aksel Torgerson
+// atorgerson
+
 #include <string>
 #include <iomanip>
 #include <iostream>

@@ -1,3 +1,6 @@
+// Aksel Torgerson
+// atorgerson
+
 #include "Drink.h"
 
 Drink::Drink() {}

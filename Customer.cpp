@@ -1,3 +1,6 @@
+// Aksel Torgerson
+// atorgerson
+
 #include "Customer.h"
 
 using namespace std;
