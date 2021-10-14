@@ -18,6 +18,21 @@ void Drink::Prepare(const STYLE serving_style) {
 	style = serving_style;
 }
 
+string Drink::getStyle() {
+	switch (style) {
+		case NEAT:
+			return "Neat";
+		case ROCKS:
+			return "On the Rocks";
+		case DOUBLE:
+			return "Double";
+		case TALL:
+			return "Tall";
+		default:
+			return "";
+	}
+}
+
 float Drink::TotalPrice() {
 	switch (style) {
 		case NEAT:
@@ -38,7 +53,7 @@ float Drink::TotalPrice() {
 	}
 }
 void Drink::Print() {
-	std::cout << name << " (" << style << "): $";
+	std::cout << name << " (" << getStyle() << "): $";
 	std::cout << std::fixed;
 	std::cout << std::setprecision(2);
 	std::cout << TotalPrice() << endl;

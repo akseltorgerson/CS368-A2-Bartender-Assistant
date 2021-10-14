@@ -1,8 +1,4 @@
 #include <string>
-#include <iomanip>
-#include <iostream>
-
-using namespace std;
 
 #ifndef DRINK_HEADER
 #define DRINK_HEADER
@@ -13,8 +9,9 @@ struct Drink {
 		string name;
 		float basePrice;
 		STYLE style;
+		private:
+			string getStyle();
 		public:
-			Drink();
 			Drink(string _name, float _price, STYLE _style = NEAT);
 			Drink(const Drink& copy_from);
 			void Prepare(const STYLE serving_style);
